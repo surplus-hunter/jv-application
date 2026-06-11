@@ -215,12 +215,6 @@
             <p>I pull 100% fresh, un-skip-traced Florida tax deed surplus leads. I'm looking for a hungry recovery partner for an 80/20 backend split. Apply below.</p>
         </div>
 
-        <!-- 
-        IMPORTANT: Replace the action URL below with your own Formspree endpoint.
-        1. Go to formspree.io and create a free account.
-        2. Create a new form and copy the endpoint URL.
-        3. Paste it inside the action="" attribute below.
-        -->
         <form id="jvForm" action="https://formspree.io/f/mwvjqybr" method="POST">
             
             <div class="form-group">
@@ -231,6 +225,11 @@
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone / WhatsApp Number</label>
+                <input type="text" id="phone" name="phone" required placeholder="+1 (555) 123-4567">
             </div>
 
             <div class="form-group">
@@ -245,7 +244,7 @@
                         <input type="radio" name="has_attorney" value="Yes" required> Yes
                     </label>
                     <label class="radio-label">
-                        <input type="radio" name="has_attorney" value="No"> No, but I can find one
+                        <input type="radio" name="has_attorney" value="No, but I can find one"> No, but I can find one
                     </label>
                     <label class="radio-label">
                         <input type="radio" name="has_attorney" value="No"> No
@@ -298,9 +297,21 @@
                             <p>Thanks for applying. If you look like a good fit, I'll reach out to the email you provided shortly.</p>
                         </div>
                     `;
+                } else {
+                    container.innerHTML = `
+                        <div class="success-message" style="display: block;">
+                            <h2 style="color: #f87171;">Submission Failed</h2>
+                            <p>Something went wrong. Please email your application directly to us or try again later.</p>
+                        </div>
+                    `;
                 }
             } catch (error) {
-                alert('Oops! There was a problem submitting your form.');
+                container.innerHTML = `
+                    <div class="success-message" style="display: block;">
+                        <h2 style="color: #f87171;">Connection Error</h2>
+                        <p>Could not reach the server. Please check your internet connection and try again.</p>
+                    </div>
+                `;
             }
         });
     </script>
